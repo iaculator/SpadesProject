@@ -14,6 +14,10 @@ public class Hand {
     public void playCard(){
 
     }
+    //will be used to display the current hand
+    public String toString(){
+
+    }
 
 
 }

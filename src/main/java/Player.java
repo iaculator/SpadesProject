@@ -9,15 +9,11 @@ public class Player {
     public void Play(){
 
     }
-    //In this method hand of the player will be displayed on the screen and player will be asked to play a card
+    //This method will be called in Game and it will call PlayerPlay or BotPlay depending on the playerType.
     public void PlayerPlay(){
 
     }
-
-    //In this method hand of the player will be displayed on the screen and player will be asked to play a card(the only difference from player is that admin Player will be able to see everyone else's cards as well.
-    public void AdminPlay(){
-
-    }
+    //In this method hand of bot will be displayed on the screen and bot will play a card it's hand.
     public void BotPlay(){
 
     }
