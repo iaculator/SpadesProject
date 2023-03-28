@@ -1,12 +1,25 @@
 public class Node {
-    int data;
+    Cards data;
     Node next;
-    public Node(int data){
+    public Node(Cards data){
         this.data=data;
         next=null;
     }
     // Method that will be used to see the data;
-    /*public String toString(){
-        return data;
-    }*/
+    public String toString(){
+
+    }
+    public Cards getData(){
+
+    }
+    public void setData(){
+
+    }
+    public Node getNext(){
+
+    }
+    public void setNext(){
+
+    }
 }
+

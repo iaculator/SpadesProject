@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="3 classes and their constructors has been added.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Node.java" afterDir="false" />
+    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="Player calsses, LinkedList and Node classes Main Class(Game) and some necessary constructors and methods has been added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BotPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BotPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BotPlayer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Cards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cards.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HumanPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +70,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679787886037</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Player calsses, LinkedList and Node classes Main Class(Game) and some necessary constructors and methods has been added.">
+      <created>1679957798782</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679957798782</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Player calsses, LinkedList and Node classes Main Class(Game) and some necessary constructors and methods has been added.">
+      <created>1679957928672</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679957928672</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,6 +100,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="3 classes and their constructors has been added." />
-    <option name="LAST_COMMIT_MESSAGE" value="3 classes and their constructors has been added." />
+    <MESSAGE value="Player calsses, LinkedList and Node classes Main Class(Game) and some necessary constructors and methods has been added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Player calsses, LinkedList and Node classes Main Class(Game) and some necessary constructors and methods has been added." />
   </component>
 </project>

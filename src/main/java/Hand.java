@@ -1,7 +1,8 @@
-import java.util.LinkedList;
+
 
 public class Hand {
     private LinkedList cardsInHand;
+    //A player will be implemented here.
     public Hand(){
 
     }
@@ -13,4 +14,6 @@ public class Hand {
     public void playCard(){
 
     }
+
+
 }
