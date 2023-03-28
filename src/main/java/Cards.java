@@ -9,10 +9,11 @@ public class Cards {
     public void setCardValues(){
 
     }
+    //We can display the cards with this method.
     public String toString(){
 
     }
-    //
+    //--------------------GETTERS SETTERS-------------------
     public String getSuit(){
 
     }
@@ -22,7 +23,5 @@ public class Cards {
     public int getCardValue(){
 
     }
-    public void setCardValue(){
 
-    }
 }

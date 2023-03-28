@@ -18,6 +18,10 @@ public class Hand {
     public String toString(){
 
     }
+    //With this method we will be able to make changes on LinkedList from Player class
+    public LinkedList getHandLinkedList(){
+
+    }
 
 
 }

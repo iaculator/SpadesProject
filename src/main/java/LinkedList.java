@@ -2,8 +2,7 @@ public class LinkedList {
     Node head;
     Node tail;
     public LinkedList(){
-        head=null;
-        tail=null;
+
     }
     //will be used when creating the hand and deck
     public void addToTail(){
