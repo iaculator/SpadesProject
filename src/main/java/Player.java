@@ -19,16 +19,16 @@ public class Player {
     }
     //--------------GETTERS SETTERS----------------
     public int getPlayerScore(){
-
+        return playerScore;
     }
-    public void setPlayerScore(){
-
+    public void setPlayerScore(int score){
+        playerScore=score;
     }
     public int getBid(){
-
+        return bid;
     }
-    public void setBid(){
-
+    public void setBid(int b){
+        bid=b;
     }
 
 }

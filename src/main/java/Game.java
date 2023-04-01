@@ -4,10 +4,12 @@ public class Game {
        // Players will be implemented.
         //Hands will be implemented.
         //CardsOnTable will be implemented.
+        Deck d=new Deck();
 
     }
     // The method that will start tour by shuffling and distributing the cards with methods in Deck Class and other necessary loops etc and takeBids method will be called.
     // displayAllHands method will be called in method.
+
     public void StartGame(){
 
     }

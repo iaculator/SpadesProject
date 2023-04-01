@@ -3,25 +3,23 @@ public class Cards {
     private final int cardValue;
 
     public Cards(String suit,int value){
-
-    }
-    //In this method we will assign the values of cards in to right suits.
-    public void setCardValues(){
+        this.suit=suit;
+        cardValue=value;
 
     }
     //We can display the cards with this method.
     public String toString(){
-
+        if(cardValue<11)
+        return suit+cardValue;
+        else
+            return suit;
     }
-    //--------------------GETTERS SETTERS-------------------
+    //--------------------GETTERS---------------------
     public String getSuit(){
-
-    }
-    public void setSuit(){
-
+        return this.suit;
     }
     public int getCardValue(){
-
+        return cardValue;
     }
 
 }

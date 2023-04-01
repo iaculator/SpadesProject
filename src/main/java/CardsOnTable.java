@@ -6,6 +6,6 @@ public class CardsOnTable {
     }
     //GETTER
    public LinkedList getTableLinkedList(){
-
+        return Table;
    }
 }
