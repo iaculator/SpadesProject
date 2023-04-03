@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="CardsOnTable class has been added since wee need information of the cards on table and some minor changes has been made.">
+    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="Instead of shuffling cards in Deck class then adding them into hands in Hand class, both work is now being done in a single method in the Hand Class and working properly. Other than that TakeBids function in game class has been moved to Payer class and all the objects except CardsOnTable has been created with appropriate parameters in the Game calss.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CardsOnTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CardsOnTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Deck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680031735433</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="An unnecessary method has been deleted from Cards class and the deck has been created.">
+      <created>1680308909237</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680308909237</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +141,8 @@
     <MESSAGE value="Player calsses, LinkedList and Node classes Main Class(Game) and some necessary constructors and methods has been added." />
     <MESSAGE value="I found separate player classes unnecessary so i deleted other 2 player classes many functions has been added to game class(main) and player class." />
     <MESSAGE value="Just some adjustments(Comments etc.)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Just some adjustments(Comments etc.)." />
+    <MESSAGE value="An unnecessary method has been deleted from Cards class and the deck has been created." />
+    <MESSAGE value="Instead of shuffling cards in Deck class then adding them into hands in Hand class, both work is now being done in a single method in the Hand Class and working properly. Other than that TakeBids function in game class has been moved to Payer class and all the objects except CardsOnTable has been created with appropriate parameters in the Game calss." />
+    <option name="LAST_COMMIT_MESSAGE" value="Instead of shuffling cards in Deck class then adding them into hands in Hand class, both work is now being done in a single method in the Hand Class and working properly. Other than that TakeBids function in game class has been moved to Payer class and all the objects except CardsOnTable has been created with appropriate parameters in the Game calss." />
   </component>
 </project>
