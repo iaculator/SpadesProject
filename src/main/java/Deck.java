@@ -57,8 +57,8 @@ public class Deck {
                 }
 
             }
-            cardsInDeck.print();
-            System.out.println(nume);
+            //cardsInDeck.print();
+            //System.out.println(nume);
 
 
         }

@@ -2,11 +2,14 @@ import java.util.Random;
 import java.util.Scanner;
 public class Player {
     //a Hand will be implemented here.
-    private int playerScore,bid;
-    private String playerType;
+    private int playerScore,bid,toursWon;
+    private String playerType,playerName;
     Scanner sc=new Scanner(System.in);
-    Player(Hand h,  String playerType){
-
+    Player(Hand h,  String playerType, String playerName){
+        this.playerType=playerType;
+        this.playerName=playerName;
+        playerScore=0;
+        toursWon=0;
     }
 
     public void Play(){
@@ -17,8 +20,9 @@ public class Player {
         }
 
     }
-    //This method will be called in Game and it will call PlayerPlay or BotPlay depending on the playerType.
+    //This method will be called in Game, and it will call PlayerPlay or BotPlay depending on the playerType.
     public void PlayerPlay(){
+
 
     }
     //In this method hand of bot will be displayed on the screen and bot will play a card it's hand.
@@ -29,15 +33,19 @@ public class Player {
     public void takeBids(){
 
         if(playerType=="human"){
-            System.out.println("Enter your bid");
+            System.out.println("Enter your bid.");
             int bidInput= sc.nextInt();
             bid=bidInput;
+            System.out.println("Your bid is "+bid);
         }
         else{
             Random rand=new Random();
             int max=8;//I have limited the bot bid wth 8 otherwise game wouldn't be realistic.
             int randInInterval=rand.nextInt(max);
             bid=randInInterval;
+            System.out.println(playerName+"'s bid is "+bid);
+
+
         }
 
 
@@ -54,6 +62,12 @@ public class Player {
     }
     public void setBid(int b){
         bid=b;
+    }
+    public int getToursWon(){
+        return getToursWon();
+    }
+    public void IncToursWon(){
+        toursWon++;
     }
 
 }

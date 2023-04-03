@@ -39,14 +39,15 @@ public class Hand {
             nume++;
             }
         //d.getDeckLinkedList().print();
-        cardsInHand.print();
-        System.out.println(nume);
+        //cardsInHand.print();
+        //System.out.println(nume);
         }
 
 
 
     //The card that player played will be deleted from the Hand LinkedList.
-    public void playCard(){
+    public void playCard(Cards card){
+
 
     }
     //will be used to display the current hand
