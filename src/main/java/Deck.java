@@ -1,12 +1,14 @@
 public class Deck {
 
-    LinkedList cardsInDeck=new LinkedList();
-    String suit="";
+    private LinkedList cardsInDeck=new LinkedList();
+    private String suit="";
+    private int nume;
 
 
 
 
     public Deck(){
+    nume=0;
     createDeck();
     }
 
@@ -33,7 +35,7 @@ public class Deck {
                 }
                 String tmp=suit;
                 suit=tmp;
-                for(int i=1;i<=14;i++){
+                for(int i=2;i<=14;i++){
                     String s="";
                     switch(i){
                         case 11:s=" "+"Jack";
@@ -48,15 +50,29 @@ public class Deck {
                     suit=tmp+ s;
 
                     Cards c=new Cards(suit,i);
-                    System.out.println(c.toString());
                     Node n=new Node(c);
                     cardsInDeck.addToTail(n);
+                    nume++;
 
                 }
 
             }
             cardsInDeck.print();
+            System.out.println(nume);
 
+
+        }
+        public LinkedList getDeckLinkedList(){
+            return cardsInDeck;
+        }
+        public int getNume(){
+            return nume;
+        }
+        public void setNume(int nume){
+            this.nume=nume;
+        }
+        public void decreaseNume(){
+            nume--;
         }
 
 }

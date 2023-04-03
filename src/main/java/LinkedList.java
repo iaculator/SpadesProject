@@ -16,22 +16,47 @@ public class LinkedList {
         tail=n;
     }
     //will be used while removing from hand.
-    public void deleteHead(){
+    public void deleteHead(Node n){
+
+
+
+            if(head==null)
+                tail=null;
+            else
+            head=head.getNext();
+
 
     }
     //will be used while removing from hand.
-    public void deleteMiddle(){
+    public void deleteMiddle(Node n){
+        Node previous;
+        previous=getPrevious(n);
+        if(previous==null){
+            deleteHead(n);
+        }
+        else{
+            if(n.getNext()==null){
+                deleteFromTail(n);
+            }
+            else{
+                previous.setNext(n.getNext());
+            }
+        }
+
 
     }
     //will be used while removing from both hand and deck.
-    public void deleteFromTail(){
-        if(tail==null&&head!=null){
-            head=null;
-        }
-        else{
-            tail=getPrevious(tail);
-            tail.setNext(null);
-        }
+    public void deleteFromTail(Node n){
+
+
+            tail = getPrevious(tail);
+            if (tail != null){
+                tail.setNext(null);
+            } else {
+                head = null;
+            }
+
+
     }
 
     //The method that will choose 1 card from the hand and return that node(for bot players).
@@ -53,10 +78,17 @@ public class LinkedList {
         return previous;
     }
     public void print() {
+        int a=0;
         Node tmp = head;
         while (tmp != null) {
+            a++;
             System.out.print(tmp.data.toString() + ",");
+
             tmp = tmp.next;
         }
+        System.out.println(a);
+    }
+    public Node getHead(){
+        return head;
     }
 }

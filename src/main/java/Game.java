@@ -1,22 +1,38 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Game {
+    Deck d=new Deck();
+    Hand playerhand=new Hand(d);
+    Hand bothand0=new Hand(d);
+    Hand bothand1=new Hand(d);
+    Hand bothand2=new Hand(d);
+    Player humanPlayer=new Player(playerhand,"human");
+    Player bot0=new Player(bothand0,"bot");
+    Player bot1=new Player(bothand1,"bot");
+    Player bot2=new Player(bothand2,"bot");
+
+    Scanner sc=new Scanner(System.in);
     public static void main(String[] args){
        //Deck will be implemented.
        // Players will be implemented.
         //Hands will be implemented.
         //CardsOnTable will be implemented.
-        Deck d=new Deck();
+        StartGame();
+
+
+
+
 
     }
     // The method that will start tour by shuffling and distributing the cards with methods in Deck Class and other necessary loops etc and takeBids method will be called.
     // displayAllHands method will be called in method.
 
-    public void StartGame(){
+    public  static void StartGame(){
+
 
     }
-    //Bid of each player will be taken in this method and setBid method from Player Class will be used.
-    public void takeBids(){
 
-    }
     //The method that will work when all the cards has been played then arrangePoints and checkPoints methods will be called.
     public void EndOfTour(){
 
@@ -35,6 +51,9 @@ public class Game {
     }
     //In this method all hands will be displayed
     public void displayAllHands(){
+
+    }
+    public void distrubuteHands(Hand h){
 
     }
 
