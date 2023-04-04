@@ -57,7 +57,6 @@ public class Hand {
     public Node BotPlayCard(CardsOnTable table,String s){
 
         Node n=cardsInHand.ExactSearch(s);
-        System.out.print("heğ? ");
         getHandLinkedList().print();;
         Node tmp=n;
         Cards c=new Cards(n.getData().getSuit(),n.getData().getCardValue());

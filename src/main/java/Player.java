@@ -62,7 +62,6 @@ public class Player {
 
                 Node n=h.BotPlayCard(tableLinkedList,firstCard);
                 cardValueOnTable=n.getData().getCardValue();
-                //System.out.print("nasıl? ");
                // h.getHandLinkedList().print();
                 h.getHandLinkedList().deleteMiddle(n);
                  return getCardValueOnTable();
