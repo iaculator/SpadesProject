@@ -1,8 +1,9 @@
 import java.util.Random;
 
 public class Hand {
-    private int nume;
+    private int nume,humanCardValueOnTable;
     private LinkedList cardsInHand=new LinkedList();
+
     //A player will be implemented here.
     public Hand(Deck d){
         nume=0;
@@ -46,8 +47,47 @@ public class Hand {
 
 
     //The card that player played will be deleted from the Hand LinkedList.
-    public void playCard(Cards card){
+    public void HumanPlayCard(Node card,CardsOnTable table){
+        humanCardValueOnTable=card.getData().getCardValue();
+        Cards c =new Cards(card.getData().getSuit(),humanCardValueOnTable);
+        table.addCard(c);
 
+
+    }
+    public Node BotPlayCard(CardsOnTable table,String s){
+
+        Node n=cardsInHand.ExactSearch(s);
+        System.out.print("heğ? ");
+        getHandLinkedList().print();;
+        Node tmp=n;
+        Cards c=new Cards(n.getData().getSuit(),n.getData().getCardValue());
+        //n.setNext(null);
+        //tmp.setNext(null);
+        table.addCard(c);
+        getHandLinkedList().print();;
+        return tmp;
+    }
+    public String FirstCard(CardsOnTable table){
+        Random rand=new Random();
+        int x=rand.nextInt(2,14);
+        Node n=cardsInHand.pickFirstCard(x);
+        Cards firstCard =n.getData();
+        String suitOfFirstCard=firstCard.getSuit();
+        System.out.println("Bot0 Played: "+suitOfFirstCard);
+        getHandLinkedList().deleteMiddle(n);
+        table.addCard(firstCard);
+
+        return suitOfFirstCard;
+    }
+    public boolean CheckInput(String s,CardsOnTable table){
+        Node n=cardsInHand.checkinputFromPlayer(s);
+        if(n==null){
+            return false;
+        }else{
+            getHandLinkedList().deleteMiddle(n);
+            n.setNext(null);
+           return true;
+        }
 
     }
     //will be used to display the current hand
@@ -61,6 +101,7 @@ public class Hand {
     public int getNume(){
         return nume;
     }
-
-
+    public int getHumanCardValueOnTable(){
+        return humanCardValueOnTable;
+    }
 }

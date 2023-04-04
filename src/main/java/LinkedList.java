@@ -16,7 +16,7 @@ public class LinkedList {
         tail=n;
     }
     //will be used while removing from hand.
-    public void deleteHead(Node n){
+    public void deleteHead(){
 
 
 
@@ -32,11 +32,11 @@ public class LinkedList {
         Node previous;
         previous=getPrevious(n);
         if(previous==null){
-            deleteHead(n);
+            deleteHead();
         }
         else{
             if(n.getNext()==null){
-                deleteFromTail(n);
+                deleteFromTail();
             }
             else{
                 previous.setNext(n.getNext());
@@ -46,7 +46,7 @@ public class LinkedList {
 
     }
     //will be used while removing from both hand and deck.
-    public void deleteFromTail(Node n){
+    public void deleteFromTail(){
 
 
             tail = getPrevious(tail);
@@ -82,11 +82,154 @@ public class LinkedList {
         Node tmp = head;
         while (tmp != null) {
             a++;
-            System.out.print(tmp.data.toString() + ",");
+            System.out.print(tmp.data.toString());
 
             tmp = tmp.next;
         }
         System.out.println(a);
+    }
+    public Node checkinputFromPlayer(String s){
+        Node tmp = head;
+
+        while (tmp != null) {
+            if(s.contains(tmp.data.getSuit())){
+
+                break;
+            }
+            tmp = tmp.next;
+
+        }
+        if(tmp==null){
+            return null;
+        }
+        else{
+            return tmp;
+        }
+
+
+    }
+    public Node pickFirstCard(int x){
+        Node tmp=head;
+        for(int i=0;i<x;i++){
+            tmp=tmp.next;
+            //I wrote this in order to avoid getting null pointer exception
+            if(tmp==null)
+                tmp=getPrevious(tmp);
+
+        }
+        //System.out.println(" Thetmp);
+        //tmp.setNext(null);
+        return tmp;
+
+    }
+    public Node ExactSearch(String suit) {
+        Node tmp = head, MaxCardx=null;
+        int max = 0, currentValue,NodesAftereMaxCard=0;
+        while (tmp != null) {
+            Node MaxCard=null;
+            if (suit.contains(tmp.getData().getSuitAbstract())) {
+                //System.out.println(suit.contains(tmp.getData().getSuitAbstract()));
+                currentValue = tmp.getData().getCardValue();
+                //System.out.println(currentValue);
+                if (max < currentValue) {
+                    max = currentValue;
+                    NodesAftereMaxCard=0;
+                }
+                else{
+                    NodesAftereMaxCard++;
+                }
+            }
+            else{
+                NodesAftereMaxCard++;
+            }
+            tmp = tmp.getNext();
+            if(tmp==null){
+                tmp=getPrevious(tmp);
+                break;
+            }
+        }
+        for(int i=0;i<=NodesAftereMaxCard;i++){
+            MaxCardx=(tmp);
+            tmp=getPrevious(tmp);
+        }
+        System.out.println(MaxCardx);
+        if (MaxCardx != null)
+            return MaxCardx;
+        //--------------------------------------------------------------------------------
+        else {
+
+                return TrumpSearch();
+        }
+    }
+    public Node TrumpSearch(){
+        Node tmp = head, MaxCardx=null;
+        int max = 0, currentValue,NodesAftereMaxCard=0;
+        while (tmp != null) {
+            Node MaxCard=null;
+            if (tmp.getData().getSuitAbstract().contains("Spades")) {
+                //System.out.println(suit.contains(tmp.getData().getSuitAbstract()));
+                currentValue = tmp.getData().getCardValue();
+                System.out.println(currentValue);
+                if (max < currentValue) {
+                    max = currentValue;
+                    NodesAftereMaxCard=0;
+                }
+                else{
+                    NodesAftereMaxCard++;
+                }
+            }
+            else{
+                NodesAftereMaxCard++;
+            }
+            tmp = tmp.getNext();
+            if(tmp==null){
+                tmp=getPrevious(tmp);
+                break;
+            }
+        }
+        for(int i=0;i<=NodesAftereMaxCard;i++){
+            MaxCardx=(tmp);
+            tmp=getPrevious(tmp);
+        }
+        System.out.println(MaxCardx);
+        if (MaxCardx != null)
+            return MaxCardx;
+        else{
+            return otherSearch();
+        }
+    }
+    public Node otherSearch(){
+        Node tmp = head, MaxCardx=null;
+        int max = 0, currentValue,NodesAftereMaxCard=0;
+        while (tmp != null) {
+            Node MaxCard = null;
+            currentValue = tmp.getData().getCardValue();
+            System.out.println(currentValue);
+            if (max < currentValue) {
+                max = currentValue;
+                NodesAftereMaxCard = 0;
+            } else {
+                NodesAftereMaxCard++;
+            }
+            tmp = tmp.getNext();
+            if (tmp == null) {
+                tmp = getPrevious(tmp);
+                break;
+            }
+        }
+        for(int i=0;i<=NodesAftereMaxCard;i++){
+            MaxCardx=(tmp);
+            tmp=getPrevious(tmp);
+        }
+        System.out.println(MaxCardx);
+            return MaxCardx;
+    }
+    public Node LastCardPlayedOnTable(){
+        Node tmp=head;
+        while(tmp.getNext()!=null){
+            tmp=tmp.getNext();
+        }
+        return tmp;
     }
     public Node getHead(){
         return head;

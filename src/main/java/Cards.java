@@ -1,6 +1,7 @@
 public class Cards {
     private final String suit;
     private final int cardValue;
+    private String suitAbstract;
 
     public Cards(String suit,int value){
         this.suit=suit;
@@ -9,10 +10,10 @@ public class Cards {
     }
     //We can display the cards with this method.
     public String toString(){
-        if(cardValue<11)
-        return suit+cardValue;
-        else
-            return suit;
+
+            return suit+" || ";
+
+
     }
     //--------------------GETTERS---------------------
     public String getSuit(){
@@ -21,5 +22,12 @@ public class Cards {
     public int getCardValue(){
         return cardValue;
     }
+    public String getSuitAbstract(){
+        return suitAbstract;
+    }
+    public void setSuitAbstract(String s){
+        suitAbstract=s;
+    }
+
 
 }

@@ -7,6 +7,7 @@ public class Deck {
 
 
 
+
     public Deck(){
     nume=0;
     createDeck();
@@ -37,19 +38,22 @@ public class Deck {
                 suit=tmp;
                 for(int i=2;i<=14;i++){
                     String s="";
+                    if(i<11)
+                        s=i+" of ";
                     switch(i){
-                        case 11:s=" "+"Jack";
+                        case 11:s="Jack of ";
                             break;
-                        case 12:s=" "+"Queen";
+                        case 12:s="Queen of ";
                             break;
-                        case 13:s=" "+"King";
+                        case 13:s="King of ";
                             break;
-                        case 14:s=" "+"Ace";
+                        case 14:s="Ace of ";
                             break;
                     }
-                    suit=tmp+ s;
+                    suit=s+tmp;
 
                     Cards c=new Cards(suit,i);
+                    c.setSuitAbstract(tmp);
                     Node n=new Node(c);
                     cardsInDeck.addToTail(n);
                     nume++;
