@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="Bot's logic is done and works properly. player can play a card from his/her hand by typing the card's name but can play any card from his/her hand so player logic hasn't completely done yet game loops works and it can find the greatest card on table after everyone played.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CardsOnTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CardsOnTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-    </list>
+    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="Everything except arranging points and some exceptions has been done and work properly." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680634511044</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Everything except arranging points and some exceptions has been done and work properly.">
+      <created>1680703452796</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680703452796</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,6 +189,7 @@
     <MESSAGE value="Instead of shuffling cards in Deck class then adding them into hands in Hand class, both work is now being done in a single method in the Hand Class and working properly. Other than that TakeBids function in game class has been moved to Payer class and all the objects except CardsOnTable has been created with appropriate parameters in the Game class." />
     <MESSAGE value="Instead of having the Game class as main another main class has been created since there are many functions in Game class and they require many parameters in main case. Displaying all player's hand has been added." />
     <MESSAGE value="Bot's logic is done and works properly. player can play a card from his/her hand by typing the card's name but can play any card from his/her hand so player logic hasn't completely done yet game loops works and it can find the greatest card on table after everyone played." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bot's logic is done and works properly. player can play a card from his/her hand by typing the card's name but can play any card from his/her hand so player logic hasn't completely done yet game loops works and it can find the greatest card on table after everyone played." />
+    <MESSAGE value="Everything except arranging points and some exceptions has been done and work properly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything except arranging points and some exceptions has been done and work properly." />
   </component>
 </project>
