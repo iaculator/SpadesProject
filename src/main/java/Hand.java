@@ -51,19 +51,23 @@ public class Hand {
         humanCardValueOnTable=card.getData().getCardValue();
         Cards c =new Cards(card.getData().getSuit(),humanCardValueOnTable);
         table.addCard(c);
+        //table.getTableLinkedList().print();
 
 
     }
-    public Node BotPlayCard(CardsOnTable table,String s){
+    public Node BotPlayCard(CardsOnTable table,String s,String playerName){
 
         Node n=cardsInHand.ExactSearch(s);
-        getHandLinkedList().print();;
+
+
+
+
         Node tmp=n;
         Cards c=new Cards(n.getData().getSuit(),n.getData().getCardValue());
         //n.setNext(null);
         //tmp.setNext(null);
         table.addCard(c);
-        getHandLinkedList().print();;
+        System.out.println(playerName+ " played: "+ n.getData().getSuit() );
         return tmp;
     }
     public String FirstCard(CardsOnTable table){
@@ -71,20 +75,21 @@ public class Hand {
         int x=rand.nextInt(2,14);
         Node n=cardsInHand.pickFirstCard(x);
         Cards firstCard =n.getData();
-        String suitOfFirstCard=firstCard.getSuit();
-        System.out.println("Bot0 Played: "+suitOfFirstCard);
+        String suitOfFirstCard=firstCard.getSuitAbstract();
+        System.out.println("Bot0 Played: "+firstCard.getSuit());
         getHandLinkedList().deleteMiddle(n);
         table.addCard(firstCard);
+        humanCardValueOnTable= firstCard.getCardValue();
 
         return suitOfFirstCard;
     }
-    public boolean CheckInput(String s,CardsOnTable table){
-        Node n=cardsInHand.checkinputFromPlayer(s);
+    public boolean CheckInput(String s,CardsOnTable table,String firstCard){
+        Node n=cardsInHand.checkinputFromPlayer(s,firstCard);
         if(n==null){
             return false;
         }else{
             getHandLinkedList().deleteMiddle(n);
-            n.setNext(null);
+            HumanPlayCard(n,table);
            return true;
         }
 

@@ -88,8 +88,16 @@ public class LinkedList {
         }
         System.out.println(a);
     }
-    public Node checkinputFromPlayer(String s){
+    public Node checkinputFromPlayer(String s,String firstCard){
         Node tmp = head;
+        Node tmp2=head;
+        while (tmp2 != null) {
+            if(tmp2.data.getSuit().contains(firstCard)){
+                break;
+            }
+            tmp2 = tmp2.next;
+        }
+
 
         while (tmp != null) {
             if(s.contains(tmp.data.getSuit())){
@@ -103,7 +111,13 @@ public class LinkedList {
             return null;
         }
         else{
-            return tmp;
+            if(tmp2!=null&&tmp.getData().getSuit().contains(firstCard)==false){
+                return null;
+            }
+            else{
+                return tmp;
+            }
+
         }
 
 
@@ -152,7 +166,7 @@ public class LinkedList {
             MaxCardx=(tmp);
             tmp=getPrevious(tmp);
         }
-        System.out.println(MaxCardx);
+        //System.out.println(MaxCardx);
         if (MaxCardx != null)
             return MaxCardx;
         //--------------------------------------------------------------------------------
@@ -169,7 +183,7 @@ public class LinkedList {
             if (tmp.getData().getSuitAbstract().contains("Spades")) {
                 //System.out.println(suit.contains(tmp.getData().getSuitAbstract()));
                 currentValue = tmp.getData().getCardValue();
-                System.out.println(currentValue);
+                //System.out.println(currentValue);
                 if (max < currentValue) {
                     max = currentValue;
                     NodesAftereMaxCard=0;
@@ -191,7 +205,7 @@ public class LinkedList {
             MaxCardx=(tmp);
             tmp=getPrevious(tmp);
         }
-        System.out.println(MaxCardx);
+        //System.out.println(MaxCardx);
         if (MaxCardx != null)
             return MaxCardx;
         else{
@@ -204,8 +218,8 @@ public class LinkedList {
         while (tmp != null) {
             Node MaxCard = null;
             currentValue = tmp.getData().getCardValue();
-            System.out.println(currentValue);
-            if (max < currentValue) {
+            //System.out.println(currentValue);
+            if (max > currentValue) {
                 max = currentValue;
                 NodesAftereMaxCard = 0;
             } else {
@@ -217,11 +231,12 @@ public class LinkedList {
                 break;
             }
         }
-        for(int i=0;i<=NodesAftereMaxCard;i++){
+        System.out.println("NodesAfterMaxCard "+NodesAftereMaxCard);
+        for(int i=0;i<=NodesAftereMaxCard-1;i++){
             MaxCardx=(tmp);
             tmp=getPrevious(tmp);
         }
-        System.out.println(MaxCardx);
+        //System.out.println(MaxCardx);
             return MaxCardx;
     }
     public Node LastCardPlayedOnTable(){
@@ -233,5 +248,8 @@ public class LinkedList {
     }
     public Node getHead(){
         return head;
+    }
+    public Node getTail(){
+        return tail;
     }
 }

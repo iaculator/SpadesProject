@@ -26,24 +26,26 @@ public class Player {
     public int PlayerPlay(CardsOnTable tableLinkedList,String firstCard){
         boolean a=true;
         int m=0;
-        while(a){
+        while(a==true){
             m++;
             System.out.println("Your current hand is: ");
             h.getHandLinkedList().print();
             System.out.println("Which card do you want to play?");
             String cardToPlay=sc.nextLine();
             //System.out.println(cardToPlay+"e");
-            if(h.CheckInput(cardToPlay,tableLinkedList))
-            a=false;
+            if(h.CheckInput(cardToPlay,tableLinkedList,firstCard)){
+                a=false;
+            }
+
             else{
 
                 if(m==1)
                     //I added this statement due to some bug in my code that i couldn't find its reason but this statement solves it.
-                    cardToPlay=sc.nextLine();
+                   sc.nextLine();
                 if(cardToPlay.isEmpty()){
                     System.out.println("You didn't enter anything. Please try again.");
                 }else{
-                    System.out.println("You don't have that card Please try again.");
+                    System.out.println("You can't play that card Please try again.");
                 }
                 continue;
             }
@@ -60,10 +62,12 @@ public class Player {
     //In this method hand of bot will be displayed on the screen and bot will play a card it's hand.
     public int BotPlay(CardsOnTable tableLinkedList,String firstCard){
 
-                Node n=h.BotPlayCard(tableLinkedList,firstCard);
+                Node n=h.BotPlayCard(tableLinkedList,firstCard,playerName);
+
                 cardValueOnTable=n.getData().getCardValue();
                // h.getHandLinkedList().print();
                 h.getHandLinkedList().deleteMiddle(n);
+                //System.out.println(cardValueOnTable);
                  return getCardValueOnTable();
     }
     //Bid of each player will be taken in this method and setBid method from Player Class will be used.
@@ -117,6 +121,19 @@ public class Player {
     }
     public String getPlayerName(){
         return playerName;
+    }
+    public int getRoundstoWonLeft(){
+        return (bid-toursWon);
+    }
+    public int getExtraRoundsWon(){
+        return toursWon-bid;
+    }
+    public boolean checkAboveBid(){
+        if(toursWon>bid)
+            return true;
+        else{
+            return false;
+        }
     }
 
 }
