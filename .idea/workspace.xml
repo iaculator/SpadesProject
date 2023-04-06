@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="Everything is done and works fine, this is the last version of the project if I don't decide to make little changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-    </list>
+    <list default="true" id="77ca0bfc-93ae-4bb9-abdb-160ab3b556e3" name="Changes" comment="The final version of the project." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680757209506</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="The final version of the project.">
+      <created>1680800958830</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680800958830</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +212,7 @@
     <MESSAGE value="Bot's logic is done and works properly. player can play a card from his/her hand by typing the card's name but can play any card from his/her hand so player logic hasn't completely done yet game loops works and it can find the greatest card on table after everyone played." />
     <MESSAGE value="Everything except arranging points and some exceptions has been done and work properly." />
     <MESSAGE value="Everything is done and works fine, this is the last version of the project if I don't decide to make little changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything is done and works fine, this is the last version of the project if I don't decide to make little changes" />
+    <MESSAGE value="The final version of the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="The final version of the project." />
   </component>
 </project>

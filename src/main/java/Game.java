@@ -164,7 +164,7 @@ public class Game {
     //This method will check whether someone reached 500 points and if yes, it will return true.
     public void checkPoints(Player p){
         if(p.getPlayerScore()>=500){
-            System.out.println(p.getPlayerName()+" won the game with "+p.getPlayerScore());
+            System.out.println(p.getPlayerName()+" won the game with "+p.getPlayerScore()+" points");
             if(p.getPlayerName().equals("You"))
                 System.out.print(" Congratulations!");
             gameOver=true;
