@@ -18,7 +18,7 @@ public class Hand {
             Node tmp = d.getDeckLinkedList().getHead();
             for(int i=0;i<randInInterval;i++ ){
                 if(tmp.getNext()!=null){
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                 }
             }
             Node tmp1=tmp;

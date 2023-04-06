@@ -1,6 +1,6 @@
 public class LinkedList {
-    Node head;
-    Node tail;
+    private Node head;
+    private Node tail;
     public LinkedList(){
         head=null;
         tail=null;
@@ -74,8 +74,8 @@ public class LinkedList {
                 System.out.println("");
                 lineArrangement();
             }
-            System.out.print(tmp.data.toString()+" ");
-            tmp = tmp.next;
+            System.out.print(tmp.getData().toString()+" ");
+            tmp = tmp.getNext();
             a++;
         }
         System.out.println("("+a+" cards)");
@@ -91,17 +91,17 @@ public class LinkedList {
         Node tmp = head;
         Node tmp2=head;
         while (tmp2 != null) {
-            if(tmp2.data.getSuit().contains(firstCard)){
+            if(tmp2.getData().getSuit().contains(firstCard)){
                 break;
             }
-            tmp2 = tmp2.next;
+            tmp2 = tmp2.getNext();
         }
         while (tmp != null) {
-            if(s.contains(tmp.data.getSuit())){
+            if(s.contains(tmp.getData().getSuit())){
 
                 break;
             }
-            tmp = tmp.next;
+            tmp = tmp.getNext();
 
         }
         if(tmp==null){
@@ -120,7 +120,7 @@ public class LinkedList {
     public Node pickFirstCard(int x){
         Node tmp=head;
         for(int i=0;i<x;i++){
-            tmp=tmp.next;
+            tmp=tmp.getNext();
             //I wrote this in order to avoid getting null pointer exception
             if(tmp==null)
                 tmp=getPrevious(tmp);

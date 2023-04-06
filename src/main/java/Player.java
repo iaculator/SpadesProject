@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class Player {
     //a Hand will be implemented here.
-    Hand h;
+    private Hand h;
     private int playerScore,bid,toursWon,cardValueOnTable;
     private String playerType,playerName;
     //Constructor takes hand the type of player and player name as parameters.
@@ -42,7 +42,7 @@ public class Player {
                 if(cardToPlay.isEmpty()){
                     System.out.println("You didn't enter anything. Please try again.");
                 }else{
-                    System.out.println("You can't play that card. Please try again.");
+                    System.out.println("Illegal card to play. Please try again.");
                 }
                 continue;
             }
@@ -133,6 +133,9 @@ public class Player {
     }
     public int getRoundstoWonLeft(){
         return (bid-toursWon);
+    }
+    public void resetToursWon(){
+        toursWon=0;
     }
     public int getExtraRoundsWon(){
         return toursWon-bid;

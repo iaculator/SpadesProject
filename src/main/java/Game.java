@@ -7,18 +7,18 @@ public class Game {
        // Players will be implemented.
         //Hands will be implemented.
         //CardsOnTable will be implemented.
-        Deck d=new Deck();
-        Hand bothand0=new Hand(d);
-        Player bot0=new Player(bothand0,"bot","Bot0");
-        Hand playerhand=new Hand(d);
-        Player humanPlayer=new Player(playerhand,"human","You");
-        Hand bothand1=new Hand(d);
-        Player bot1=new Player(bothand1,"bot","Bot1");
-        Hand bothand2=new Hand(d);
-        Player bot2=new Player(bothand2,"bot","Bot2");
-        CardsOnTable cardsonTable=new CardsOnTable();
+        private Deck d=new Deck();
+        private Hand bothand0=new Hand(d);
+        private Player bot0=new Player(bothand0,"bot","Bot0");
+        private Hand playerhand=new Hand(d);
+        private Player humanPlayer=new Player(playerhand,"human","You");
+        private Hand bothand1=new Hand(d);
+        private Player bot1=new Player(bothand1,"bot","Bot1");
+        private Hand bothand2=new Hand(d);
+        private Player bot2=new Player(bothand2,"bot","Bot2");
+        private CardsOnTable cardsonTable=new CardsOnTable();
         private String firstCard;
-        Cards card;
+        private Cards card;
         private boolean gameOver=false;
         private int b0CardValue,hCardValue,b1CardValue,b2CardValue,tourCount;
         //Constructor, Calls directly the StarGame function and starts the game.
@@ -126,6 +126,10 @@ public class Game {
             bothand1.addCard(d);
             bothand2.addCard(d);
             playerhand.addCard(d);
+            bot0.resetToursWon();
+            bot1.resetToursWon();
+            bot2.resetToursWon();
+            humanPlayer.resetToursWon();
             StartGame();
         }
 
@@ -193,19 +197,19 @@ public class Game {
 // Simply displays the current situation of the rounds player need to win to reach their bid and displays the extra rounds they won if they won more rounds than their bids.
     public void displayRoundsToWon(){
             if(bot0.checkAboveBid()){
-                System.out.println("Bot 0 won extra +"+bot0.getExtraRoundsWon()+" rounds.");
+                System.out.println("Bot0 won extra +"+bot0.getExtraRoundsWon()+" rounds.");
             }
             else{
-                System.out.println("Bot0 has "+ bot0.getRoundstoWonLeft()+" rounds to reach the bid.");
+                System.out.println("Bot0 must win "+ bot0.getRoundstoWonLeft()+" rounds to reach the bid.");
             }
             if(bot1.checkAboveBid()){
-                System.out.println("Bot 1 won extra +"+bot1.getExtraRoundsWon()+" rounds.");
+                System.out.println("Bot1 won extra +"+bot1.getExtraRoundsWon()+" rounds.");
              }
             else{
                 System.out.println("Bot1 must win "+ bot1.getRoundstoWonLeft()+" rounds to reach the bid.");
             }
             if(bot2.checkAboveBid()){
-                System.out.println("Bot 2 won extra +"+bot2.getExtraRoundsWon()+" rounds.");
+                System.out.println("Bot2 won extra +"+bot2.getExtraRoundsWon()+" rounds.");
             }
             else{
                 System.out.println("Bot2 must win "+ bot2.getRoundstoWonLeft()+" rounds to reach the bid.");

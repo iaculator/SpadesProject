@@ -1,6 +1,6 @@
 public class Node {
-    Cards data;
-    Node next;
+    private Cards data;
+    private Node next;
     //Constructor
     public Node(Cards data){
         this.data=data;
