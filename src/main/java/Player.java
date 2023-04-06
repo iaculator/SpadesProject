@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 public class Player {
@@ -5,7 +6,7 @@ public class Player {
     Hand h;
     private int playerScore,bid,toursWon,cardValueOnTable;
     private String playerType,playerName;
-    Scanner sc=new Scanner(System.in);
+    //Constructor takes hand the type of player and player name as parameters.
     Player(Hand h,  String playerType, String playerName){
         this.h=h;
         this.playerType=playerType;
@@ -13,7 +14,7 @@ public class Player {
         playerScore=0;
         toursWon=0;
     }
-
+    //This method will be called in Game, and it will call PlayerPlay or BotPlay depending on the playerType.
     public int Play(CardsOnTable tableLinkedList,String firstCard){
         if(playerType=="human")
              return PlayerPlay(tableLinkedList,firstCard);
@@ -22,84 +23,91 @@ public class Player {
         }
 
     }
-    //This method will be called in Game, and it will call PlayerPlay or BotPlay depending on the playerType.
+    //Takes input from player checks if input is valid then calls necessary function from hand class.
     public int PlayerPlay(CardsOnTable tableLinkedList,String firstCard){
         boolean a=true;
         int m=0;
         while(a==true){
+            Scanner sc=new Scanner(System.in);
             m++;
-            System.out.println("Your current hand is: ");
+            System.out.print("Your current hand is: ");
             h.getHandLinkedList().print();
-            System.out.println("Which card do you want to play?");
+            System.out.println("");
+            System.out.print("Which card do you want to play?(Enter card name exactly such as Jack of Spades):");
             String cardToPlay=sc.nextLine();
-            //System.out.println(cardToPlay+"e");
             if(h.CheckInput(cardToPlay,tableLinkedList,firstCard)){
                 a=false;
             }
-
             else{
-
-                if(m==1)
-                    //I added this statement due to some bug in my code that i couldn't find its reason but this statement solves it.
-                   sc.nextLine();
                 if(cardToPlay.isEmpty()){
                     System.out.println("You didn't enter anything. Please try again.");
                 }else{
-                    System.out.println("You can't play that card Please try again.");
+                    System.out.println("You can't play that card. Please try again.");
                 }
                 continue;
             }
         }
-
-
-
         return h.getHumanCardValueOnTable();
-
-
-
-
     }
-    //In this method hand of bot will be displayed on the screen and bot will play a card it's hand.
+    //In this method bot plays a card by calling BotPlayCard function in hand class and returns the value of the card played to be used while checking rounds winner in Game class. displaying bot's hand moved to game class.
     public int BotPlay(CardsOnTable tableLinkedList,String firstCard){
-
                 Node n=h.BotPlayCard(tableLinkedList,firstCard,playerName);
-
                 cardValueOnTable=n.getData().getCardValue();
-               // h.getHandLinkedList().print();
                 h.getHandLinkedList().deleteMiddle(n);
-                //System.out.println(cardValueOnTable);
                  return getCardValueOnTable();
     }
-    //Bid of each player will be taken in this method and setBid method from Player Class will be used.
+    //Bid of players will be taken in this method, the bid player make will be displayed and will make necessary exception handlings.(taking input from player and choosing a random valid number for bots).
     public void takeBids(){
-
+        int bidInput=0;
         if(playerType=="human"){
-            System.out.println("-Enter your bid.");
-            int bidInput= sc.nextInt();
+            System.out.print("Your hand is: ");
+            h.getHandLinkedList().print();
+            while(1<2){
+                Scanner scx=new Scanner(System.in);
+                try {
+                    System.out.print("-Enter your bid:");
+                    bidInput= scx.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Wrong input! Please try again.");
+                    continue;
+                }
+                if(bidInput>13||bidInput<0){
+                    System.out.println("That bid is out of range please enter a bid between 0 and 13.");
+                    continue;
+                }
+                else{
+                    break;
+                }
+            }
             bid=bidInput;
-            System.out.println("-Your bid is "+bid);
+            if(bid==0){
+                System.out.println("-Your bid is Nill.");
+            }
+            else{
+                System.out.println("-Your bid is "+bid+".");
+            }
+
         }
         else{
             Random rand=new Random();
             int max=8;//I have limited the bot bid wth 8 otherwise game wouldn't be realistic.
-            int randInInterval=rand.nextInt(2,max);
+            int randInInterval=rand.nextInt(0,max);
             bid=randInInterval;
-            System.out.println("-"+playerName+"'s bid is "+bid);
-
+            if(bid==0){
+                System.out.println("-"+playerName+"'s bid is Nill.");
+            }
+            else{
+                System.out.println("-"+playerName+"'s bid is "+bid+".");
+            }
 
         }
-
-
-    }
-    public void setFirstCard(){
-
     }
     //--------------GETTERS SETTERS----------------
     public int getPlayerScore(){
         return playerScore;
     }
     public void setPlayerScore(int score){
-        playerScore=score;
+        playerScore+=score;
     }
     public int getBid(){
         return bid;
@@ -110,6 +118,7 @@ public class Player {
     public int getToursWon(){
         return getToursWon();
     }
+    //increases the toursWon
     public void IncToursWon(){
         toursWon++;
     }
@@ -129,7 +138,7 @@ public class Player {
         return toursWon-bid;
     }
     public boolean checkAboveBid(){
-        if(toursWon>bid)
+        if(toursWon-bid>0)
             return true;
         else{
             return false;

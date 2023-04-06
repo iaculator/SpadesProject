@@ -2,10 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-
-
     Scanner sc=new Scanner(System.in);
-
        //Deck will be implemented.
        // Players will be implemented.
         //Hands will be implemented.
@@ -19,42 +16,35 @@ public class Game {
         Player bot1=new Player(bothand1,"bot","Bot1");
         Hand bothand2=new Hand(d);
         Player bot2=new Player(bothand2,"bot","Bot2");
-        CardsOnTable cardsonTable=new CardsOnTable(d);
+        CardsOnTable cardsonTable=new CardsOnTable();
         private String firstCard;
         Cards card;
-
-
-
-        int b0CardValue,hCardValue,b1CardValue,b2CardValue;
+        private boolean gameOver=false;
+        private int b0CardValue,hCardValue,b1CardValue,b2CardValue,tourCount;
+        //Constructor, Calls directly the StarGame function and starts the game.
         public Game(){
-            System.out.println("-Spades is the trump.");
             StartGame();
         }
 
-
-
-
-
-
-
-
     // The method that will start tour by shuffling and distributing the cards with methods in Deck Class and other necessary loops etc and takeBids method will be called.
     // displayAllHands method will be called in method.
-
+    //(shuffling and distrubuting is being made in Hand class with addCard method!!!)
     public  void StartGame(){
-            System.out.println("-----------------------------------BIDS-----------------------------------");
-        TakeBids();
-        //displayAllHands();
-
-        //Just added this as an option.
+            tourCount++;
+        System.out.println("--------------------------------------------------------------"+"TOUR "+(tourCount)+"--------------------------------------------------------------");
+        System.out.println("-Spades is the trump.");
+        String s;
+        //Just added this as an extra you can play by seeing only your hand or by seeing all players hand.
         while(1<2){
-            System.out.println("Do you want to see all the hands?(answer with yes/no)");
-            String s=sc.nextLine();
+            System.out.print("Do you want to see all the hands?(answer with yes/no):");
+            s=sc.nextLine();
             if(s.equals("yes")){
                 displayAllHands();
+                System.out.println("");
                 break;
             }
             if(s.equals("no")){
+                System.out.println("");
                 break;
             }
             else{
@@ -62,46 +52,55 @@ public class Game {
                 continue;
             }
         }
+        System.out.println("-----------------------------------BIDS-----------------------------------");
+        //Taking the bids from players
+        TakeBids();
+        //In this loop players play their cards in order.
         for(int i=0;i<13;i++){
              int a=i+1;
-            System.out.println("------------------------------------"+"ROUND "+(a)+"------------------------------------");
+            System.out.println("-------------------------------------------------"+"ROUND "+(a)+"-------------------------------------------------");
+            // At first round which is when i=0 bot0 will play a random card and after that, players will play if they have cards with the same suit as first played card.
                 if(i==0) {
                     FirstCard();
-                    bothand0.getHandLinkedList().print();
-                    System.out.println("----------------------------------------------------");
+                    if(s.equals("yes")){
+                        System.out.print("Bot 0's hand is: ");
+                        bothand0.getHandLinkedList().print();
+                    }
+                    System.out.println("----------------------------------------------------------------------------------");
                 }
                 else {
-                    //cardsonTable.getTableLinkedList().print();
                    b0CardValue= bot0.Play(cardsonTable,firstCard);
-                    bothand0.getHandLinkedList().print();
-                    //System.out.println(firstCard);
-                    //System.out.println("Bot0 Played:h? "+cardsonTable.getLastPlayedCard());
-                    System.out.println("----------------------------------------------------");
+                   if(s.equals("yes")){
+                       System.out.print("Bot 0's hand is: ");
+                       bothand0.getHandLinkedList().print();
+                   }
+                    System.out.println("----------------------------------------------------------------------------------");
                 }
-
                b1CardValue= bot1.Play(cardsonTable,firstCard);
-                bothand1.getHandLinkedList().print();
-
-                //System.out.println("Bot1 Played: " +cardsonTable.getLastPlayedCard());
-                System.out.println("----------------------------------------------------");
-
+                if(s.equals("yes")){
+                    System.out.print("Bot 1's hand is: ");
+                    bothand1.getHandLinkedList().print();
+                }
+                System.out.println("----------------------------------------------------------------------------------");
               b2CardValue= bot2.Play(cardsonTable,firstCard);
-                bothand2.getHandLinkedList().print();
-                //System.out.println("Bot2 Played: "+cardsonTable.getLastPlayedCard());
-            System.out.println("----------------------------------------------------");
-                //playerhand.getHandLinkedList().print();
-               hCardValue= humanPlayer.Play(cardsonTable,firstCard);
-                System.out.println("--------------------CARDS ON TABLE--------------------");
+                if(s.equals("yes")){
+                    System.out.print("Bot 2's hand is: ");
+                    bothand2.getHandLinkedList().print();
+                }
+            System.out.println("----------------------------------------------------------------------------------");
+                System.out.print("----------------------------------------CARDS ON TABLE----------------------------------------");
                 cardsonTable.getTableLinkedList().print();
+            System.out.println("----------------------------------------------------------------------------------------------");
+               hCardValue= humanPlayer.Play(cardsonTable,firstCard);
+                System.out.println("");
                 Player playerWon=findthePlayerWithGreatestCard();
                 if(playerWon==humanPlayer){
                     System.out.println("You have won this round.");
-                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("-----------------------------------------------------------------------------------------");
                 }
-
                 else{
                     System.out.println(playerWon.getPlayerName()+" won the round");
-                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("-----------------------------------------------------------------------------------------");
                 }
                 displayRoundsToWon();
         }
@@ -110,25 +109,62 @@ public class Game {
 
 
 
-    //The method that will work when all the cards has been played then arrangePoints and checkPoints methods will be called.
+    //The method that will work when all the cards has been played then arrangePoints method will be called. İf someone reached 500 point it will cal EndOfGame method else it will also create a new deck and call StartGame function
     public void EndOfTour(){
+        System.out.println("------------------------------------POINTS------------------------------------");
         arrangePoints(bot0);
         arrangePoints(bot1);
         arrangePoints(bot2);
         arrangePoints(humanPlayer);
+        if(gameOver){
+            EndOfGame();
+        }
+        else{
+            Deck d1=new Deck();
+            d=d1;
+            bothand0.addCard(d);
+            bothand1.addCard(d);
+            bothand2.addCard(d);
+            playerhand.addCard(d);
+            StartGame();
+        }
+
+
     }
-    // The method that will end the game when a player reaches at least 500 points at the end of tour.
+    // The method that will be called at the end of game if a player reaches at least 500 points at the end of tour.
     public void EndOfGame(){
 
     }
-    //Player points will be arranged at the end of each tour.
-    public void arrangePoints(Player h){
-
-
+    //Player points will be arranged at the end of each tour also calls checkPoint function.
+    public void arrangePoints(Player p){
+            int point;
+        if(p.getBid()==0){
+            if(p.checkAboveBid())
+                point=-100;
+            else{
+                point=+100;
+            }
+        }
+        else{
+            if(p.checkAboveBid()){
+                point=p.getBid()*10+p.getExtraRoundsWon();
+            }
+            else{
+                point=-(p.getBid()*10);
+            }
+        }
+        p.setPlayerScore(point);
+        System.out.println(p.getPlayerName()+": "+p.getPlayerScore());
+        checkPoints(p);
     }
-    //This method will check whether someone reached 500 points and if yes, EndOfGame method will be called.
-    public void checkPoints(){
-
+    //This method will check whether someone reached 500 points and if yes, it will return true.
+    public void checkPoints(Player p){
+        if(p.getPlayerScore()>=500){
+            System.out.println(p.getPlayerName()+" won the game with "+p.getPlayerScore());
+            if(p.getPlayerName().equals("You"))
+                System.out.print(" Congratulations!");
+            gameOver=true;
+        }
     }
     //In this method all hands will be displayed
     public void displayAllHands(){
@@ -141,70 +177,64 @@ public class Game {
             System.out.println("-----------------------------------BOT2'S HAND-----------------------------------");
             bothand2.getHandLinkedList().print();
     }
-
+    //the function calls the takeBids function in Player class for each player
     public void TakeBids(){
             humanPlayer.takeBids();
             bot0.takeBids();
             bot1.takeBids();
             bot2.takeBids();
     }
-
+    // the function that assigns the firstCard String the suit of the first card and firstCard is being used at play functions in Player class as parameter to be used for the logic of the game
     public void FirstCard(){
             firstCard=bothand0.FirstCard(cardsonTable);
             bot0.setCardValueOnTable(bothand0.getHumanCardValueOnTable());
             b0CardValue=bot0.getCardValueOnTable();
     }
-
+// Simply displays the current situation of the rounds player need to win to reach their bid and displays the extra rounds they won if they won more rounds than their bids.
     public void displayRoundsToWon(){
             if(bot0.checkAboveBid()){
                 System.out.println("Bot 0 won extra +"+bot0.getExtraRoundsWon()+" rounds.");
             }
             else{
-                System.out.println("Bot0 has "+ bot0.getRoundstoWonLeft());
+                System.out.println("Bot0 has "+ bot0.getRoundstoWonLeft()+" rounds to reach the bid.");
             }
-            if(bot0.checkAboveBid()){
+            if(bot1.checkAboveBid()){
                 System.out.println("Bot 1 won extra +"+bot1.getExtraRoundsWon()+" rounds.");
              }
             else{
-                System.out.println("Bot1 has "+ bot1.getRoundstoWonLeft());
+                System.out.println("Bot1 must win "+ bot1.getRoundstoWonLeft()+" rounds to reach the bid.");
             }
-            if(bot0.checkAboveBid()){
+            if(bot2.checkAboveBid()){
                 System.out.println("Bot 2 won extra +"+bot2.getExtraRoundsWon()+" rounds.");
             }
             else{
-                System.out.println("Bot2 has "+ bot2.getRoundstoWonLeft());
+                System.out.println("Bot2 must win "+ bot2.getRoundstoWonLeft()+" rounds to reach the bid.");
             }
             if(humanPlayer.checkAboveBid()){
                 System.out.println("You won extra +"+humanPlayer.getExtraRoundsWon()+" rounds.");
             }
             else{
-                System.out.println("You have "+ humanPlayer.getRoundstoWonLeft()+" rounds to reach the bid.");
+                System.out.println("You must win "+ humanPlayer.getRoundstoWonLeft()+" rounds to reach the bid.");
             }
     }
-
+    // finds the player with the maximum value and decides the winner of the round and returns that player.
     public Player findthePlayerWithGreatestCard(){
        int max=   Math.max(Math.max(b0CardValue,b1CardValue),Math.max(b2CardValue,hCardValue));
-        //cardsonTable.getTableLinkedList().print();
         cardsonTable.deleteFromTable();
-
                 if(max==b0CardValue){
                     bot0.IncToursWon();
-                    System.out.println(max);
                     return bot0;
                 }
                 else if(max==b1CardValue){
                     bot1.IncToursWon();
-                    System.out.println(max);
                     return bot1;
                 }
                 else if(max==b2CardValue){
                     bot2.IncToursWon();
-                    System.out.println(max);
                     return bot2;
                 }
                 else  if(max==hCardValue){
                     humanPlayer.IncToursWon();
-                    System.out.println(max);
                     return humanPlayer;
                 }
                 else{

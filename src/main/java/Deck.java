@@ -1,5 +1,4 @@
 public class Deck {
-
     private LinkedList cardsInDeck=new LinkedList();
     private String suit="";
     private int nume;
@@ -7,20 +6,12 @@ public class Deck {
 
 
 
-
+    //Constructor
     public Deck(){
     nume=0;
     createDeck();
     }
-
-    // total of 52 cards will be shuffled Randomly
-    public void shuffleDeck(){
-
-    }
-    // In this method cards that are already been shuffled will be distributed to hand as 13 cards for each hand.
-    public void distributeCards(Hand h){
-
-    }
+        //the functions that simply creates the deck by adding necessary cards to linkedList.
         public void createDeck(){
             for(int t=0;t<4;t++){
 
@@ -51,29 +42,23 @@ public class Deck {
                             break;
                     }
                     suit=s+tmp;
-
                     Cards c=new Cards(suit,i);
                     c.setSuitAbstract(tmp);
                     Node n=new Node(c);
                     cardsInDeck.addToTail(n);
                     nume++;
-
                 }
-
             }
-            //cardsInDeck.print();
-            //System.out.println(nume);
-
-
         }
+        //___________Getters and other necessary functions to increase and decrease number of elements in the linked list of deck.
         public LinkedList getDeckLinkedList(){
             return cardsInDeck;
         }
         public int getNume(){
             return nume;
         }
-        public void setNume(int nume){
-            this.nume=nume;
+        public void IncNume(){
+            this.nume++;
         }
         public void decreaseNume(){
             nume--;

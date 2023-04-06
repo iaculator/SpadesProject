@@ -1,14 +1,12 @@
 public class Node {
     Cards data;
     Node next;
+    //Constructor
     public Node(Cards data){
         this.data=data;
         next=null;
     }
-    public Node(){
-
-    }
-    // Method that will be used to see the data;
+    //getter setters
     public String toString(){
         return data.toString();
     }

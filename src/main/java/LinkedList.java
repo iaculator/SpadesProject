@@ -47,27 +47,14 @@ public class LinkedList {
     }
     //will be used while removing from both hand and deck.
     public void deleteFromTail(){
-
-
             tail = getPrevious(tail);
             if (tail != null){
                 tail.setNext(null);
             } else {
                 head = null;
             }
-
-
     }
-
-    //The method that will choose 1 card from the hand and return that node(for bot players).
-    //public Node search(Hand CardsInHand){
-
-
-    //}
-    // The method that will get the corresponding Node from the LinkedList according to Input from the player
-      //public Node getInputParameter(Cards Card){
-
-    //}
+    //Gives the previous Node.
     public Node getPrevious(Node n){
         Node tmp=head;
         Node previous=null;
@@ -77,17 +64,29 @@ public class LinkedList {
         }
         return previous;
     }
+    //prints the LinkedList
     public void print() {
+        lineArrangement();
         int a=0;
         Node tmp = head;
         while (tmp != null) {
-            a++;
-            System.out.print(tmp.data.toString());
-
+            if(a%6==0){
+                System.out.println("");
+                lineArrangement();
+            }
+            System.out.print(tmp.data.toString()+" ");
             tmp = tmp.next;
+            a++;
         }
-        System.out.println(a);
+        System.out.println("("+a+" cards)");
     }
+    // a function being used for line arrangements.
+    public void lineArrangement(){
+        for(int i=0;i<15;i++){
+            System.out.print(" ");
+        }
+    }
+    //The function checks if the input player entered exists in Players hand if yes returns that node.
     public Node checkinputFromPlayer(String s,String firstCard){
         Node tmp = head;
         Node tmp2=head;
@@ -97,8 +96,6 @@ public class LinkedList {
             }
             tmp2 = tmp2.next;
         }
-
-
         while (tmp != null) {
             if(s.contains(tmp.data.getSuit())){
 
@@ -117,11 +114,9 @@ public class LinkedList {
             else{
                 return tmp;
             }
-
         }
-
-
     }
+    // The function that picks the first card.
     public Node pickFirstCard(int x){
         Node tmp=head;
         for(int i=0;i<x;i++){
@@ -131,11 +126,15 @@ public class LinkedList {
                 tmp=getPrevious(tmp);
 
         }
-        //System.out.println(" Thetmp);
-        //tmp.setNext(null);
-        return tmp;
+            if(tmp.getData().getSuitAbstract().equals("Spades"))
+                return null;
+            else{
+                return tmp;
+            }
 
     }
+
+    //this function is being used when bots playing checks if there are any cards with the same suit as first played card and returns the one with largest value.
     public Node ExactSearch(String suit) {
         Node tmp = head, MaxCardx=null;
         int max = 0, currentValue,NodesAftereMaxCard=0;
@@ -175,6 +174,7 @@ public class LinkedList {
                 return TrumpSearch();
         }
     }
+    // this function checks if any trump exists in this bots hand and returns the largest one if yes.
     public Node TrumpSearch(){
         Node tmp = head, MaxCardx=null;
         int max = 0, currentValue,NodesAftereMaxCard=0;
@@ -212,14 +212,14 @@ public class LinkedList {
             return otherSearch();
         }
     }
+    //this function returns the node with largest card value.
     public Node otherSearch(){
         Node tmp = head, MaxCardx=null;
         int max = 0, currentValue,NodesAftereMaxCard=0;
         while (tmp != null) {
             Node MaxCard = null;
             currentValue = tmp.getData().getCardValue();
-            //System.out.println(currentValue);
-            if (max > currentValue) {
+            if (max < currentValue) {
                 max = currentValue;
                 NodesAftereMaxCard = 0;
             } else {
@@ -231,12 +231,10 @@ public class LinkedList {
                 break;
             }
         }
-        System.out.println("NodesAfterMaxCard "+NodesAftereMaxCard);
-        for(int i=0;i<=NodesAftereMaxCard-1;i++){
+        for(int i=0;i<=NodesAftereMaxCard;i++){
             MaxCardx=(tmp);
             tmp=getPrevious(tmp);
         }
-        //System.out.println(MaxCardx);
             return MaxCardx;
     }
     public Node LastCardPlayedOnTable(){
@@ -246,6 +244,7 @@ public class LinkedList {
         }
         return tmp;
     }
+    // ----------GETTERS----------
     public Node getHead(){
         return head;
     }
